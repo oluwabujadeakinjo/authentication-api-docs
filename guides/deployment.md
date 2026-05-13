@@ -34,7 +34,7 @@ cp .env.example .env
 Open the `.env` file in your text editor and update the following fields:
 
 |**Variable**|**Default Value**|**Description**|
-|------------|-----------------|---------------|
+|---------|---------|---------|
 |`PORT`|`3000`|The port the server will answer on.|
 |`DB_URL`|`postgresql://user:pass@localhost:5432/taskflow`|PostgreSQL connection string.|
 |`JWT_SECRET`|`your_super_secret_key`|Secret key for signing tokens.|
