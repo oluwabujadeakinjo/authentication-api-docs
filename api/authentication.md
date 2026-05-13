@@ -67,18 +67,14 @@ curl -X POST https://api.example.com/v1/auth/login \
 	"message": "Invalid username or password. Verify your credentials and try again."
 }
 ```
-
-## Error Handling
-
-
-
 ## Notes
 
 * Token expires in 1 hour (3600 seconds).
 * Use HTTPS for all requests.
 * Keep credentials secure.
 
-
+## Next Step
+Visit the [**troubleshooting page**]() page to learn how to handle errors.
 
 
 
