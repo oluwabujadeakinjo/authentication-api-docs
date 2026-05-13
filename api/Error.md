@@ -50,3 +50,9 @@
 ```
 
 ### Error Handling
+The table below shows common errors:
+|**Status**|**Error Message**|**Description**|**Solution**|
+|----------|---------|-----------|----------|
+|`401 Unauthorized`|`invalid credentials`|Authentication failed|Verify username and password, then try again.|
+|`401 Unauthorized`|`token_expired`|Session timeout|The access token has expired. Generate a new token to continue|
+|`500 Internal Server Error`|`server_error`|Internal fault|An unexpected error occurred. Please try again later.|
