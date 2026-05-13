@@ -70,35 +70,7 @@ curl -X POST https://api.example.com/v1/auth/login \
 
 ## Error Handling
 
-### Missing Parameter (400 Bad Request)
 
-```json
-{
-	"status": 400,
-	"error": "missing_parameter",
-	"message": "A required field is missing. Ensure all fields are included."
-}
-```
-
-### Expired Token (401 Unauthorized)
-
-```json
-{
-	"status": 401,
-	"error": "token_expired",
-	"message": "The access token has expired. Generate a new token."
-}
-```
-
-### 500 Internal Server Error
-
-```json
-{
-	"status": 500,
-	"error": "server_error",
-	"message": "An internal server error occurred. Please try again later."
-}
-```
 
 ## Notes
 
