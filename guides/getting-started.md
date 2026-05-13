@@ -68,4 +68,4 @@ The table below shows common errors:
 ## Next Steps
 
 - Refer to the [API documentation](./Getting%20Started.md) for detailed endpoint specifications
-- Review [error handling](./ASSIGNMENT%206.docx) documentation to understand possible responses
+- Review [error handling](https://github.com/oluwabujadeakinjo/authentication-api-docs/blob/main/api/Error.md) documentation to understand possible responses
