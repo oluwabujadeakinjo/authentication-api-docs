@@ -74,7 +74,7 @@ curl -X POST https://api.example.com/v1/auth/login \
 * Keep credentials secure.
 
 ## Next Step
-Visit the [**troubleshooting page**](https://github.com/oluwabujadeakinjo/authentication-api-docs/blob/main/api/Error.md) page to learn how to handle errors.
+- Visit the [**troubleshooting page**](https://github.com/oluwabujadeakinjo/authentication-api-docs/blob/main/api/Error.md) page to learn how to handle errors.
 
 
 
