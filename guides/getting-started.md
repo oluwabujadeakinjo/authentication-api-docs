@@ -9,6 +9,18 @@ You need:
 - An HTTP client
 - API base URL
 
+## Authentication Flow
+
+1. **Client sends credentials**: The client sends a request including their **username** and **password.**
+
+2. **Server validates**: The server authenticates the request and sends a response:
+     - If the credentials are valid, it sends a `200 OK` status code and grants the user access.
+     - If the credentials are invalid, it sends a `401 Unauthorized` status code and an error message.
+
+3. **Token is returned**: If the credentials are valid, the server returns a short-lived **access token** in its response.
+
+4. **Token is used in future requests**: The token is included in the client's subsequent requests.
+
 ## Step 1: Make a Login Request
 
 ### Endpoint
