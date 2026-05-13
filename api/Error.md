@@ -1,4 +1,4 @@
-### TROUBLESHOOTING
+### Error Messages
 
 #### Invalid Password (401 Unauthorized)
 
@@ -48,3 +48,5 @@
     "message": "An internal error occured. Please try again later."
 }
 ```
+
+### Error Handling
