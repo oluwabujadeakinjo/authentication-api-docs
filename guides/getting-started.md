@@ -1,15 +1,15 @@
-# Getting Started with the Authentication API
+# Getting started with the Authentication API
 
-This guide shows how to authenticate users and use the API. By the end you will be able to send requests and handle responses.
+Learn how to authenticate users and generate access tokens using the Authentication API. By the end of this guide, you will be able to successfully request a token and use it to access protected endpoints.
 
 ## Prerequisites
 
-You need:
-- Basic knowledge of HTTP APIs
-- An HTTP client
-- API base URL
+Before you begin, ensure you have:
+- Basic knowledge of REST APIs and HTTP methods.
+- An command-line tool like `curl` (or an API platform like Postman).
+- The API base URL: `https://api.example.com/v1`.
 
-## Authentication Flow
+## Authentication flow
 
 1. **Client sends credentials**: The client sends a request including their **username** and **password.**
 
@@ -21,21 +21,9 @@ You need:
 
 4. **Token is used in future requests**: The token is included in the client's subsequent requests.
 
-## Step 1: Make a Login Request
+## Step 1: Make a login request
+To generate a token, send a `POST` request to the `/auth/login` endpoint with your user credentials.
 
-### Endpoint
-
-`POST /auth/login`
-
-### Request Example
-
-```json
-{
-    "username": "isaac_timothy",
-    "password": "strong_password",
-    "client_id": "id_5348"
-}
-```
 Send the request using cURL:
 
 ```bash
@@ -49,35 +37,44 @@ curl -X POST https://api.example.com/v1/auth/login \
 }'
 ```
 
-## Step 2: Understand the Response 
+## Step 2: Understand the response 
+If your credentials are valid, the server returns a `200 OK` status and a JSON payload containing your token:
 
-The response contains:
-* `access_token`: a short-lived token that is included in subsequent requests.
-* `expires_in`: the lifespan of the access token. It is written in seconds.
-* `user_id`: a unique identifier assigned to the user.
+```JSON
+{
+     "access_token": "tgF65fcjIo9Hddftty8Y7p...",
+     "expires_in": 3600,
+     "user_id": "u_5348"
+}
+```
+
+* `access_token`: The secure string used to authorize subsequent requests.
+* `expires_in`: The lifespan of the access token in seconds (3600 seconds=1 hour).
+* `user_id`: The unique identifier for the authenticated user.
 
 ## Step 3: Use the Token
+Once you have the `access_token`, include it in the `Authorization` header of all future requests to access protected resources.
 
-Include the **access token** in the subsequent requests:
-`Authorization: Bearer <access_token>`
+**Format:** `Authorization: Bearer <access_token>`
 
-### Request using token
+**Example request to a protected endpoint**
 
 ```bash
 curl -X GET https://api.example.com/v1/auth/login \
 -H "Authorization: Bearer <access_token>" 
 ```
 
-## Error Handling
+## Troubleshooting common errors
+If your request fails, the API returns a standard HTTP status code and an error message.
 
 The table below shows common errors:
-|**Status**|**Error**|**Message**|
+|**Status**|**Error**|**Resolution**|
 |----------|---------|-----------|
-|`401 Unauthorized`|`invalid_credentials`|Invalid credentials. Verify username and password, and try again.|
+|`401 Unauthorized`|`invalid_credentials`|Verify username and password, and try again.|
 |`401 Unauthorized`|`token_expired`|The access token has expired. Generate a new token.|
-|`500 Internal Server Error`|`server_error`|An internal server error occurred. Please try again later.|
+|`500 Internal Server Error`|`server_error`|The server encountered an issue. Wait a moment and try again.|
 
-## Next Steps
+## Next steps
 
-- Refer to the [API documentation](./Getting%20Started.md) for detailed endpoint specifications
-- Review [error handling](https://github.com/oluwabujadeakinjo/authentication-api-docs/blob/main/api/Error.md) documentation to understand possible responses
+- Review the [**Authentication API reference**](./Getting%20Started.md) for detailed parameter specifications.
+- Read the full [**Error handling guide**](https://github.com/oluwabujadeakinjo/authentication-api-docs/blob/main/api/Error.md) to understand all potential API responses.
