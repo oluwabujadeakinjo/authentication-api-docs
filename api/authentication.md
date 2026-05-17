@@ -17,7 +17,7 @@ This API authenticates user credentials and returns a short-lived access token f
 * Secure access control.
 * Error handling.
 
-## Authentication Flow
+## Authentication flow
 
 1. **Client sends credentials**: The client sends a request including their **username** and **password.**
 
@@ -25,15 +25,23 @@ This API authenticates user credentials and returns a short-lived access token f
      - If the credentials are valid, it sends a `200 OK` status code and grants the user access.
      - If the credentials are invalid, it sends a `401 Unauthorized` status code and an error message.
 
-3. **Token is returned**: If the credentials are valid, the server returns a short-lived **access token** in its response.
+3. **Server returns a token**: If the credentials are valid, the server returns a short-lived **access token** in its response.
 
 4. **Token is used in future requests**: The token is included in the client's subsequent requests.
 
-## Endpoint
+# Endpoint
 
 `POST /auth/login`
 
-## Request Example
+## Request parameters
+
+|**Parameter**|**Type**|**Required/Optional**|**Description**|
+|-------------|--------|---------------------|---------------|
+|`username`|string|**Required**|The unique identifier for the user account.|
+|`password`|string|**Required**|The account password.|
+|`client_id`|string|Optional|An identifier for the specific application making the request.|
+
+## Request example
 
 ```bash
 curl -X POST https://api.example.com/v1/auth/login \
@@ -46,9 +54,17 @@ curl -X POST https://api.example.com/v1/auth/login \
 }'
 ```
 
-## Response Example
+## Response format
 
-### Success Message (200 OK)
+### Response properties
+
+|**Property**|**Type**|**Description**|
+|------------|--------|---------------|
+|`access_token`|string|The string token used to authorize subsequent API requests.|
+|`expires_in`|integer|The token lifetime in seconds.|
+|`user_id`|string|The unique system identifier for the authenticated user.|
+
+### Success response example (200 OK)
 
 ```json
 {
@@ -58,7 +74,7 @@ curl -X POST https://api.example.com/v1/auth/login \
 }
 ```
 
-### Error Message (401 Unauthorized)
+### Error response example (401 Unauthorized)
 
 ```json
 {
@@ -67,13 +83,12 @@ curl -X POST https://api.example.com/v1/auth/login \
 	"message": "Invalid username or password. Verify your credentials and try again."
 }
 ```
-## Notes
+## Security notes
+* Access tokens expire exactly 1 hour (3600 seconds) after generation.
+* Force HTTPS across all client environments to protect credentials in transit.
+* Treat access tokens like passwords; never log them or expose them in client-side URLs.
 
-* Token expires in 1 hour (3600 seconds).
-* Use HTTPS for all requests.
-* Keep credentials secure.
-
-## Next Step
+## Next step
 - Visit the [**troubleshooting page**](https://github.com/oluwabujadeakinjo/authentication-api-docs/blob/main/api/Error.md) page to learn how to handle errors.
 
 
